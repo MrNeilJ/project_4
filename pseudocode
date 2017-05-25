@@ -1,0 +1,48 @@
+Flow of game in project 4
+
+Game will now be in a tournament style:
+
+-Welcome the user to the game
+-Explain how the game will work
+/*****************
+ *FIGHTER SEQUENCE
+ *****************/
+-Ask them how many players each time will have in the tournament
+	- Make sure that they input something larger than 0, and less than 20.
+-Loop through X amount of times(however many the user chose)
+	-Ask them if they want to rename each fighter
+	-From there ask the user to choose their primary member
+		-If they chose to rename each character, then prompt for renaming
+	-Then let them add each additional character afterwards
+		-If they chose to rename each character, then prompt for renaming
+-Ask the user if they would like to pick the enemy team, or randomize it
+	-If yes on choice, do the prior looping again.
+	-Else, automatically roll a number and assign that individual to the team.
+
+**** The teams will be created in a Queue format, this would allow for use to easily loop during the battle ****
+
+/*****************
+ *BATTLE SEQUENCE
+ *****************/
+-Begin the match by fighting both primaries against eachother.
+-The winner will stay in their teams queue, gaining back (ranom roll) percent of their health
+	-The winning team will earn +2 points towards their wins
+-The loser will be removed and placed into a losers bin.
+	-The losing team will lose 1 point in their wins.
+-If somehow there is a tie, (which I don't believe can occur in my implementation)
+	-Both teams will obtain +1 wins.
+-The fighting will continue to loop until one team has 0 members remaining.
+
+/*****************
+ *RESULTS SEQUENCE
+ *****************/
+-Display the results:
+	-Team 1 Points:
+	-Team 2 Points:
+
+	-Team 1 # of members lost:
+	-Team 2 # of members lost:
+
+	-Congratulations Team X on the tournament victory!
+
+-Ask the user if they would like to play again.
