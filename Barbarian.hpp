@@ -13,6 +13,7 @@ private:
 public:
 	// Constructor
 	Barbarian();
+	Barbarian(std::string);
 
 	// Attack and Defend Member Functions
 	void attack();

@@ -89,21 +89,30 @@ void Game::round() {
 		std::cout << "OPPONENT 1's TURN TO ATTACK:" << std::endl;
 		std::cout << "----------------------------------------" << std::endl;
 
+		// Modified so that we are using the roster instead
+		Roster[0]->getFront()->attack();
+		Roster[1]->getFront()->defend(Roster[0]->getFront()->getAttack());
+		/*
 		Opponents[0]->attack();
 		Opponents[1]->defend(Opponents[0]->getAttack());
+		*/
 
-
+		// Modified so that we are using the roster instead of Opponents
+		Roster[0]->getFront()->attackDescription(Opponents[1]->getDamageReceived());
+		Roster[1]->getFront()->defenseDescription(Opponents[1]->getDefense());
+		/*
 		Opponents[0]->attackDescription(Opponents[1]->getDamageReceived());
 		Opponents[1]->defenseDescription(Opponents[1]->getDefense());
+		*/
 
-
-
+		/* Commenting this out for now to lessen total blocks of text in application
 		// Print the actual results for the round
 		std::cout << "ROUND " << turn << " STATS" << std::endl;
 		std::cout << "----------------------------------------" << std::endl;
 		std::cout << "Opponent 1's Attack Roll:  "   << Opponents[0]->getAttack()  << std::endl;
 		std::cout << "Opponent 2's Defense Roll: "   << Opponents[1]->getDefense() << std::endl;
 		std::cout << "\nRound Strength Loss:        " << Opponents[1]->getDamageReceived() << std::endl;
+		*/
 
 		currOpp = 1;
 	}
@@ -111,33 +120,43 @@ void Game::round() {
 		std::cout << "OPPONENT 2's TURN TO ATTACK:" << std::endl;
 		std::cout << "----------------------------------------" << std::endl;
 
+		// Modified so that we are using the roster instead
+		Roster[1]->getFront()->attack();
+		Roster[0]->getFront()->defend(Roster[1]->getFront()->getAttack());
+		/*
 		Opponents[1]->attack();
 		Opponents[0]->defend(Opponents[1]->getAttack());
+		*/
 
-
+		// Modified so that we are using the roster instead of Opponents
+		Roster[1]->getFront()->attackDescription(Opponents[0]->getDamageReceived());
+		Roster[0]->getFront()->defenseDescription(Opponents[0]->getDefense());
+		/*
 		Opponents[1]->attackDescription(Opponents[0]->getDamageReceived());
 		Opponents[0]->defenseDescription(Opponents[0]->getSpecial());
+		*/
 
-
-
+		/* Commengting this out for not to lessen total blocks of text in the application
 		// Print the actual results for the round
 		std::cout << "ROUND " << turn << " STATS" << std::endl;		std::cout << "----------------------------------------" << std::endl;
 		std::cout << "Opponent 2's Attack Roll:  "   << Opponents[1]->getAttack()  << std::endl;
 		std::cout << "Opponent 1's Defense Roll: "   << Opponents[0]->getDefense() << std::endl;
 		std::cout << "\nRound Strength Loss:       " << Opponents[0]->getDamageReceived() << std::endl;
+		*/
 
 		currOpp = 0;
 	}
-
+	/* Commenting this out to lessen total blocks of text in the application (easier to read)
 	std::cout << "\nRemaining Strength:" << std::endl;
 	std::cout << "Opponent 1: " << Opponents[0]->getStrength() << std::endl;
 	std::cout << "Opponent 2: " << Opponents[1]->getStrength() << "\n" << std::endl;
+	*/
 
-	if (Opponents[0]->getStrength() < 1){
-		Opponents[0]->setLives(Opponents[0]->getLives() - 1);
+	if (Roster[0]->getFront()->getStrength() < 1){
+		Roster[0]->getFront()->setLives(Roster[0]->getFront()->getLives() - 1);
 	}
-	else if	(Opponents[1]->getStrength() < 1) {
-		Opponents[1]->setLives(Opponents[1]->getLives() - 1);
+	else if	(Roster[1]->getFront()->getStrength() < 1) {
+		Roster[1]->getFront()->setLives(Roster[1]->getFront()->getLives() - 1);
 	}
 
 	turn++;
@@ -177,3 +196,54 @@ Game::~Game() {
 }
 
 
+/**************************************************************
+ *                  Game::setOpponent()
+ *  This is a member function that allows the user to set the
+ *  value stored in one of the Opponents ptrs to a creature value.
+ **************************************************************/
+void Game::addPlayerToRoster(int currOpp, int userCreature) {
+	if (userCreature == 1) {
+		Roster[currOpp]->addBack(new Vampire());
+	}
+	else if (userCreature == 2) {
+		Roster[currOpp]->addBack(new Barbarian());
+	}
+	else if (userCreature == 3) {
+		Roster[currOpp]->addBack(new BlueMen());
+	}
+	else if (userCreature == 4) {
+		Roster[currOpp]->addBack(new Medusa());
+	}
+	else if (userCreature == 5) {
+		Roster[currOpp]->addBack(new HarryPotter());
+	}
+}
+
+void Game::addPlayerToRoster(int currOpp, int userCreature, std::string name) {
+	if (userCreature == 1) {
+		Roster[currOpp]->addBack(new Vampire(name));
+	}
+	else if (userCreature == 2) {
+		Roster[currOpp]->addBack(new Barbarian(name));
+	}
+	else if (userCreature == 3) {
+		Roster[currOpp]->addBack(new BlueMen(name));
+	}
+	else if (userCreature == 4) {
+		Roster[currOpp]->addBack(new Medusa(name));
+	}
+	else if (userCreature == 5) {
+		Roster[currOpp]->addBack(new HarryPotter(name));
+	}
+}
+
+void Game::autoBuildRoster(int currPlayer, int playerSize) {
+	int randRoll;
+	for (int i = 0; i < playerSize; i++) {
+		// Roll a random number between 1 and 6
+		randRoll = (rand()%5) + 1;
+
+		// Add that randomized creature to the roster
+		addPlayerToRoster(currPlayer, randRoll);
+	}
+}

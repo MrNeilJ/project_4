@@ -21,6 +21,7 @@ private:
 public:
 	// Constructor function
 	HarryPotter();
+	HarryPotter(std::string nameInput);
 
 	// Attack / defense functions
 	void attack();

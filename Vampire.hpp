@@ -20,6 +20,7 @@ private:
 
 public:
 	Vampire();
+	Vampire(std::string nameInput);
 
 	void attack();
 

@@ -21,6 +21,7 @@ private:
 public:
 	// Constructor
 	Medusa();
+	Medusa(std::string nameInput);
 
 	// Attack / Defend
 	void attack();

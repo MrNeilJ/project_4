@@ -22,6 +22,17 @@ HarryPotter::HarryPotter() {
 	setStrength(12);
 	setLives(2);
 	setSpecial(0);
+	setName("Harry Potter");
+}
+
+HarryPotter::HarryPotter(std::string nameInput) {
+	setAttack(Dice(2, 6));
+	setDefense(Dice(2, 6));
+	setArmor(0);
+	setStrength(12);
+	setLives(2);
+	setSpecial(0);
+	setName(nameInput);
 }
 
 /**************************************************************
@@ -91,4 +102,6 @@ void HarryPotter::defenseDescription(int) {
 		setSpecial(0);
 	}
 }
+
+
 

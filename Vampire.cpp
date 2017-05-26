@@ -22,7 +22,16 @@ Vampire::Vampire() {
 	setArmor(0);
 	setStrength(12);
 	setLives(1);
+	setName("Dracula");
+}
 
+Vampire::Vampire(std::string nameInput) {
+	setAttack(Dice(2, 6));
+	setDefense(Dice(2, 6));
+	setArmor(0);
+	setStrength(12);
+	setLives(1);
+	setName(nameInput);
 }
 
 /**************************************************************
@@ -95,4 +104,6 @@ void Vampire::defenseDescription(int specialInput) {
 		return;
 	}
 }
+
+
 

@@ -15,8 +15,10 @@
 #include <iostream>
 #include <memory>
 #include "Creature.hpp"
+#include "Queue.hpp"
 class Game {
 private:
+	Queue* Roster[2];
 	Creature* Opponents[2];
 	int currOpp;
 	int currAttack;
@@ -34,7 +36,13 @@ public:
 	void classDescriptions(int);
 	void setOpponent(int, int);
 
-	// Round controls
+	void addPlayerToRoster(int currOpp, int userCreature);
+	void addPlayerToRoster(int currOpp, int userCreature, std::string name);
+
+	void autoBuildRoster(int, int);
+
+
+		// Round controls
 	void round();
 	void play();
 };

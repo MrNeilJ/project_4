@@ -14,6 +14,7 @@ private:
 public:
 	// Constructor
 	BlueMen();
+	BlueMen(std::string nameInput);
 
 	// Attack / Defense Functions
 	void attack();

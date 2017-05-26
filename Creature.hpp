@@ -16,6 +16,8 @@ private:
 	int 	strength;
 	int 	lives;
 
+	std::string name;
+
 	int		currAttack;
 	int 	currDefense;
 	int		damageReceived;
@@ -30,6 +32,7 @@ public:
 	void setCurrAttack(int);
 	void setCurrDefense(int);
 	void setSpecial(int);
+	void setName(std::string);
 
 	void setstrengthLoss(int);
 	void setDamageReceived(int);

@@ -24,7 +24,18 @@ Medusa::Medusa() {
 	setStrength(8);
 	setLives(1);
 	setSpecial(0);
+	setName("Medusa");
 
+}
+
+Medusa::Medusa(std::string nameInput) {
+	setAttack(Dice(2, 6));
+	setDefense(Dice(1, 6));
+	setArmor(3);
+	setStrength(8);
+	setLives(1);
+	setSpecial(0);
+	setName(nameInput);
 }
 
 /**************************************************************
@@ -89,5 +100,7 @@ void Medusa::attackDescription(int attackDamage) {
 void Medusa::defenseDescription(int special) {
 	return;
 }
+
+
 
 

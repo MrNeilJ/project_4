@@ -25,7 +25,17 @@ BlueMen::BlueMen() {
 	setStrength(12);
 	setLives(1);
 	setSpecial(0);
+	setName("Blue Men Group");
+}
 
+BlueMen::BlueMen(std::string nameInput) {
+	setAttack(Dice(2, 10));
+	setDefense(Dice(3, 6));
+	setArmor(3);
+	setStrength(12);
+	setLives(1);
+	setSpecial(0);
+	setName(nameInput);
 }
 
 /**************************************************************
@@ -84,3 +94,5 @@ void BlueMen::attackDescription(int attackDamage) {
 void BlueMen::defenseDescription(int) {
 	return;
 }
+
+

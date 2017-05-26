@@ -46,3 +46,117 @@ Game will now be in a tournament style:
 	-Congratulations Team X on the tournament victory!
 
 -Ask the user if they would like to play again.
+
+**************************************************************************************************
+
+Welcome to the Battle Royale Tournament. Here you will be facing off against the
+dreaded Team Come On and Slam. You will be picking the team roster for both sets.
+The goal is simple, have your team annihilate the other one.  The one with zero
+teammates left will be deemed the loser.
+
+Are you ready to play? (Y/N)
+
+If (Y)
+	-Proceed with the next phase of the application
+
+Else
+	-Why are you such a little chicken? They are not THAT tough.
+	-Exit game
+
+/*********************
+ * TEAM SETUP
+ *********************/
+Time to build the teams! First off, how many players would you like each team to have?
+	- getInt()
+	- Received value will then be used for # of loops required for character creation
+
+Perfect, now for the most important question, would you like to name your characters?(Y/N)
+	- getChar()
+	- Received value will then be used in the looping to allow the user to set the creatures name.
+
+Loop for(int i = 0; i < numPlayers; i++)
+	- Which character would you like to add?
+		- Show menu of all the different creatures.
+	- getInt()
+		- Response to the menu items, use this to add this creature to player roster
+	-IF THE USER SELECTED TO CHOOSE NAMES
+		- What would you like to name your creature?
+			- getString()
+				- string will then be stored into the creature value name (will be default otherwise)
+	- Notify player that the creature has been added to their roster
+
+Print to the console:
+Team one player creation completed, would you like to create the opposing team? or would you like to randomize theirs?
+	- Print out a menu showing the options:
+		- 1) Choose opposing teams players
+		- 2) Randomize it!
+	- getInt()
+		- Store this in a value to be used later
+
+IF THEY CHOSE (1) <- Choose their opponents
+	-Loop for(int i = 0; i < numPlayers; i++)
+     	- Which character would you like to add?
+     		- Show menu of all the different creatures.
+     	- getInt()
+     		- Response to the menu items, use this to add this creature to player roster
+     	-IF THE USER SELECTED TO CHOOSE NAMES
+     		- What would you like to name your creature?
+     			- getString()
+     				- string will then be stored into the creature value name (will be default otherwise)
+     	- Notify player that the creature has been added to their roster
+
+Print to the console:
+Teams have been set, let the matches begin!
+
+Begin the fight with each of the first individuals from both teams
+	-Fight until one of them is victorious
+	-Print to the console the name of the one who won.
+	-Roll to see how much health will be restored.
+	-Print to the console the name of the one sent to the losers pit.
+
+	-Give the winning team +2 wins
+	-Give the losing team -1 wins
+
+	-Print # of players remaining:
+	-Team 1:
+	-Team 2:
+
+	-Remove the loser from that players queue.
+	-Set the next players to be used.
+Loop the above set of code until one of the teams is at 0.
+
+
+**************************************************************************************************
+
+Things to modify from the original application:
+CREATURE CLASS:
+	- Name (string)
+		- This will be where we will store the updated name if the user so chooses to modify the name
+	- Heal (method)
+		- This will be a method that will allow us to heal the monster if they successfully win the round
+	- setName(string)
+		- A way for us to set the name of the creature if the user chooses to modify it
+	- getName()
+		- A way to retrieve the name so when they fight we can personalize the round for them.
+
+
+NEW REQUIREMENTS:
+We will need to create two new application queues, one for the player, and the other for the oppoenent
+	Queue playerRoster
+
+	Queue opponentRoster
+
+	Required functions for these:
+	-Add player
+	-Remove player
+
+
+
+
+
+
+
+
+
+
+

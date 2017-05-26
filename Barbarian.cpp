@@ -25,7 +25,18 @@ Barbarian::Barbarian() {
 	setStrength(12);
 	setLives(1);
 	setSpecial(0);
+	setName("Barbarian");
 
+}
+
+Barbarian::Barbarian(std::string nameInput) {
+	setAttack(Dice(2, 6));
+	setDefense(Dice(2, 6));
+	setArmor(0);
+	setStrength(12);
+	setLives(1);
+	setSpecial(0);
+	setName(nameInput);
 }
 
 /**************************************************************
@@ -79,5 +90,7 @@ void Barbarian::attackDescription(int attackDamage) {
 void Barbarian::defenseDescription(int) {
 	return;
 }
+
+
 
 

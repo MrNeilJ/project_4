@@ -198,6 +198,10 @@ int Creature::getSpecial() {
 	return special;
 }
 
+void Creature::setName(std::string nameInput) {
+	name = nameInput;
+}
+
 
 
 
