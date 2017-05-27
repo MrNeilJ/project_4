@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include "Queue.hpp"
-#include "Vampire.hpp"
 
 Queue::Queue() {
 	front 	= nullptr;
@@ -35,7 +34,7 @@ Queue::~Queue() {
 	back = nullptr;
 }
 
-void Queue::addBack(Creature*val) {
+void Queue::addBack(Creature* val) {
 	if (front == nullptr) {
 		front = new QueueNode(val, back, back);
 	}
@@ -52,16 +51,33 @@ void Queue::addBack(Creature*val) {
 	}
 }
 
+void Queue::addFront(Creature*val, int teamInput) {
+	if (front == nullptr) {
+		front = new QueueNode(val, nullptr, nullptr);
+		front->team = teamInput;
+	}
+	else {
+		QueueNode* queuePtr = new QueueNode(val, front, nullptr);
+		queuePtr->team =teamInput;
+		front = queuePtr;
+		front->next->prev = front;
+
+
+
+	}
+}
+
+
 Creature* Queue::getFront() {
 	if (front) {
 		return front->value;
 	}
 	else {
-		std::cout << "No item to show." << std::endl;
+		return nullptr;
 	}
 }
 
-void Queue::removeFront() {
+/*void Queue::removeFront() {
 	if (front == back){
 		front = nullptr;
 		back = nullptr;
@@ -72,8 +88,30 @@ void Queue::removeFront() {
 		delete front;
 		front = back->next;
 	}
+}*/
 
+Creature* Queue::removeFront() {
+	if (front == back){
+		QueueNode* nodePtr = front;
+		front = nullptr;
+		back = nullptr;
+
+		// Return the creature that was removed
+		return nodePtr->value;
+	}
+	else {
+		QueueNode* nodePtr = front;
+		front->next->prev = back;
+		back->next = front->next;
+		// delete front;
+		front = back->next;
+
+
+		return nodePtr->value;
+	}
 }
+
+
 
 /**************************************************************
  *                  Queue::displayList()
@@ -83,14 +121,11 @@ void Queue::removeFront() {
 void Queue::displayList() {
 	if (front) {
 		QueueNode *nodePtr = front;
-		while (nodePtr != back) {
+		while (nodePtr != nullptr) {
 			// Print the value in the current node
-			std::cout << nodePtr->value << " ";
+			std::cout << "Team " << (nodePtr->team + 1) << ": " << nodePtr->value->getName() << std::endl;
 			// Move to the next node
 			nodePtr = nodePtr->next;
-		}
-		if (back) {
-			std::cout << nodePtr->value << " ";
 		}
 	}
 	else {
@@ -100,3 +135,37 @@ void Queue::displayList() {
 
 
 }
+
+void Queue::moveFront() {
+	/*// Save the current stats of the front pointer
+	QueueNode *nodePtr = front;*/
+	// Move the front pointer to the next item in the list
+	front = front->next;
+	back  = front->prev;
+
+	/*// Set the now current front pointer to the previous nodePtr
+	front->prev = nodePtr;
+
+	// Set the previous head value to now point to the head
+	nodePtr->next = front;
+*/
+
+}
+
+void Queue::clearSet() {
+	QueueNode *nodePtr = front;
+	while (nodePtr != back) {
+// Mark node for preparation to delete
+		QueueNode *garbage = nodePtr;
+
+// Move pointer to next item
+		nodePtr = nodePtr->next;
+
+// Delete old node
+		delete garbage;
+	}
+	delete back;
+	front = nullptr;
+	back = nullptr;
+}
+

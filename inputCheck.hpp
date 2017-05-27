@@ -19,8 +19,8 @@ std::string getString();		// Returns a string characters (can include spaces)
 std::string getWord();			// Returns a single word and has the option to clear the istream
 
 // Char validators
-char getChar();					// Returns a single character
-char getChar(int);
+char getCharacter();					// Returns a single character
+char getCharacter(int);
 
 // Number validators
 int getInt();					// Confirms user input was an int and returns that value

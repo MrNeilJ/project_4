@@ -37,6 +37,8 @@ public:
 	void setstrengthLoss(int);
 	void setDamageReceived(int);
 
+	void heal();
+
 	// Dice Rollers
 	int rollAttack();
 	int rollDefense();
@@ -57,6 +59,9 @@ public:
 	int getArmor();
 	int getDamageReceived();
 	int getSpecial();
+	std::string getName();
+
+	void displayStats();
 
 
 };

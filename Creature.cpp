@@ -202,6 +202,22 @@ void Creature::setName(std::string nameInput) {
 	name = nameInput;
 }
 
+std::string Creature::getName() {
+	return name;
+}
+
+void Creature::displayStats() {
+	std::cout << "Name:     " << getName() << std::endl;
+	std::cout << "Strength: " << getStrength() << std::endl;
+
+}
+
+void Creature::heal() {
+	int randNum = rand()%5;
+	std::cout << name << " gained " << randNum << " health for winning." << std::endl;
+
+}
+
 
 
 

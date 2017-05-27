@@ -16,15 +16,21 @@
 #include <memory>
 #include "Creature.hpp"
 #include "Queue.hpp"
+#include "numberList.hpp"
+
 class Game {
 private:
-	Queue* Roster[2];
+	Queue Roster[2];
+	numberList LoserPit;
 	Creature* Opponents[2];
 	int currOpp;
 	int currAttack;
 	int currDefense;
 	int currStrengthLoss;
 	int turn = 1;
+
+	int team1Wins;
+	int team2Wins;
 
 public:
 	// Constructor
@@ -45,6 +51,7 @@ public:
 		// Round controls
 	void round();
 	void play();
+	void clearGame();
 };
 
 

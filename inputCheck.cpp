@@ -49,7 +49,7 @@ std::string getWord() {
  *	Retrieves input from the user, allows only for a single
  *	letter for input, good for (Y/N) types of responses.
 **************************************************************/
-char getChar() {
+char getCharacter() {
 	char tempChar = getchar();
 
 	// Clear the error for the cin stream
@@ -66,7 +66,7 @@ char getChar() {
  *	Retrieves input from the user, allows only for a single
  *	letter for input, good for (Y/N) types of responses.
 **************************************************************/
-char getChar(int clear) {
+char getCharacter(int clear) {
 	int tempChar;
 	if (clear == 1) {
 		tempChar = getchar();

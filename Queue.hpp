@@ -20,6 +20,7 @@ private:
 		Creature* value;
 		QueueNode* next;
 		QueueNode* prev;
+		int team = -1;
 
 		// Constructor for the QueueNode Struct
 		QueueNode(Creature *value1, QueueNode* next1 = nullptr, QueueNode* prev1 = nullptr) {
@@ -36,9 +37,14 @@ public:
 	Queue();
 	~Queue();
 	void addBack(Creature *val);	// Puts on item at the end of the queue
-	Creature* getFront();		// returns the value at the front of the queue
-	void removeFront();		// removes the front item in the structure
-	void displayList();
+	void addFront(Creature *val, int);
+
+	Creature* getFront();			// returns the value at the front of the queue
+	Creature* removeFront();		// removes the front item in the structure
+	void moveFront();				// moves the head pointer to the next item without removing the previous one
+	void displayList();				// displays all of the items in the queue
+	void clearSet();
+
 };
 
 
